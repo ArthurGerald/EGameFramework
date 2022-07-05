@@ -110,8 +110,7 @@ public class GameMapManager : IBaseManager
     }
 
     public void OnInit(GameEngine gameEngine)
-    {
-        
+    {       
         m_Mono = gameEngine;
     }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.EventSystems;
@@ -49,6 +50,7 @@ public class UIManager :IBaseManager
         m_UICamera = gameSetting.UICamera;
         m_EventSystem = gameSetting.EventSystem;
         m_CanvasRate = Screen.height / (m_UICamera.orthographicSize * 2);
+        RegiseAllControll();
     }
     public void Teset()
     {
@@ -106,7 +108,7 @@ public class UIManager :IBaseManager
 
         panel.Init();
 
-       
+        go.transform.SetParent(m_UiRoot, false);
 
         go.name = name;
 
@@ -138,6 +140,7 @@ public class UIManager :IBaseManager
 
     private IEnumerator LoadPrefab(string name)
     {
+        name = "TestPanel";
         AsyncOperationHandle<GameObject> handle = Addressables.LoadAssetAsync<GameObject>(name);
         if (!handle.IsValid())
         {
@@ -389,4 +392,43 @@ public class UIManager :IBaseManager
     //        panel.OnShow(paralist);
     //    }
     //}
+
+    public void RegiseAllControll()
+    {
+        var types = Assembly.GetCallingAssembly().GetTypes();
+        var aType = typeof(IController);
+        List<IController> ass = new List<IController>();
+        var typess = Assembly.GetCallingAssembly().GetTypes();  //获取所有类型
+        foreach (var t in typess)
+        {
+            Type[] tfs = t.GetInterfaces();  //获取该类型的接口
+            foreach (var tf in tfs)
+            {
+                if (tf.FullName == aType.FullName)  //判断全名，是否在一个命名空间下面
+                {
+                    IController a = Activator.CreateInstance(t) as IController;
+                    ass.Add(a);
+                }
+            }
+        }
+        Debug.Log(ass.Count);
+        foreach (var item in ass)
+        {
+            item.Init();  //调用所有继承该接口的类中的方法
+        }
+
+    }
+}
+
+public interface IModel 
+{
+    void Init();
+}
+public interface ISystem
+{
+    void Init();
+}
+public interface IController 
+{
+    void Init();
 }

@@ -26,6 +26,7 @@ public class GameEngine : MonoSingleton<GameEngine>
         RegisterManger<GameMapManager>();
         RegisterManger<ProcedureManager>();     
         RegisterManger<UIManager>();
+        //RegisterManger<ConfigManager>();
         foreach (var manager in m_Managers)
         {
             manager.OnInit(this);

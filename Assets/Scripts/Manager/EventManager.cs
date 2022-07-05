@@ -232,4 +232,5 @@ public enum EventType
 {
     StartChangeScene,
     EndChangeScene,
+    EndLoadConfig,
 }

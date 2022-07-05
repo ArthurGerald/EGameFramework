@@ -16,10 +16,10 @@ public class GameSetting : MonoSingleton<GameSetting>
 
     public GameSetting Init()
     {
-        RectTransform uiRoot = transform.Find("UIRoot") as RectTransform;
-        panelRoot = transform.Find("UIRoot/WndRoot") as RectTransform;
-        UICamera = transform.Find("UIRoot/UICamera").GetComponent<Camera>();
-        EventSystem= transform.Find("UIRoot/EventSystem").GetComponent<EventSystem>();
+       // RectTransform uiRoot = transform.Find("UIRoot") as RectTransform;
+       // panelRoot = transform.Find("UIRoot/WndRoot") as RectTransform;
+      //  UICamera = transform.Find("UIRoot/UICamera").GetComponent<Camera>();
+      //  EventSystem= transform.Find("UIRoot/EventSystem").GetComponent<EventSystem>();
         return this;
      
     }

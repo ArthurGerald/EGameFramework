@@ -17,6 +17,7 @@
     protected internal override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
     {
         base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
+        if(isChangeEnd)
         ChangeState<ProcedureFightScene>(procedureOwner);
     }
     public void EndChangeScene()

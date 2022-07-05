@@ -8,6 +8,9 @@ public class ProcedureFightScene : ProcedureBase
     {
         base.OnEnter(procedureOwner);
         Debug.LogError("77777");
+        UIManager uIManager = GameEngine.Instance.GetManager<UIManager>();
+        uIManager.ShowPanel<TestPanelBase>();
+        uIManager.Teset();
 
     }
    

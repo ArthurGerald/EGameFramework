@@ -1,13 +1,5 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
+﻿
 using System;
-
-
 /// <summary>
 /// 有限状态机状态基类。
 /// </summary>
@@ -78,7 +70,6 @@ public abstract class FsmState<T> where T : class
             {
              //   throw new GameFrameworkException("FSM is invalid.");
             }
-
             fsmImplement.ChangeState<TState>();
         }
 
